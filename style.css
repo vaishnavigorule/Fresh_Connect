@@ -1,0 +1,31 @@
+body {
+    background-color: #f3fff6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hero {
+    padding: 100px 20px;
+    color: rgb(9, 9, 9);
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  h1, p {
+    max-width: 700px;
+  }
+  
+  .btn {
+    border-radius: 8px;
+    padding: 12px 25px;
+  }
+  
+  footer {
+    background-color: #e6f4ec;
+    font-size: 15px;
+  }
+  
