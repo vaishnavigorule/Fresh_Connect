@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Supplier Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .profile-box {
+      border: 1px solid #ccc;
+      padding: 25px;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      max-width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-box">
+    <h2 id="name">Loading...</h2>
+    <p><strong>Type:</strong> <span id="type"></span></p>
+    <p><strong>Contact:</strong> <span id="contact"></span></p>
+    <p><strong>Location:</strong> <span id="location"></span></p>
+    <p><strong>Price (₹):</strong> <span id="price"></span></p>
+    <p><strong>Years of Experience:</strong> <span id="years"></span></p>
+    <p><strong>Customer Reviews:</strong></p>
+    <ul id="reviews"></ul>
+    <a href="view.html" class="btn btn-secondary mt-3">⬅ Back to List</a>
+  </div>
+
+  <script>
+    const suppliers = [
+       {
+    id: 1,
+    name: "Vikram Traders",
+    type: "Spices",
+    contact: "9812345670",
+    location: "Pune",
+    price: "85",
+    years: 7,
+    reviews: ["Great quality", "Always on time", "Affordable pricing"]
+  },
+  {
+    id: 2,
+    name: "FreshVeg Mart",
+    type: "Vegetables",
+    contact: "9812345671",
+    location: "Nagpur",
+    price: "35",
+    years: 5,
+    reviews: ["Fresh veggies", "Clean packaging", "Trustworthy"]
+  },
+  {
+    id: 3,
+    name: "	Green Leaf Suppliers",
+    type: "Leafy Greens",
+    contact: "9845612378",
+    location: "Ahmednagar",
+    price: "40",
+    years: 8,
+    reviews: ["Excellent service", "Affordable pricing", "Clean packaging"]
+  },
+  {
+    id: 4,
+    name: "Organic Roots",
+    type: "Organic Goods",
+    contact: "9988776655",
+    location: "Nashik",
+    price: "60",
+    years: 6,
+    reviews: ["Highly recommended", "Trustworthy supplier", "Great quality"]
+  },
+  {
+    id: 5,
+    name: "Desi Masala Co.",
+    type: "Spices",
+    contact: "9871234567",
+    location: "Kolhapur",
+    price: "95",
+    years: 4,
+    reviews: ["Clean packaging", "Always on time", "Fresh produce"]
+  },
+  {
+    id: 6,
+    name: "Mango Fresh	",
+    type: "Fruits",
+    contact: "9823456789",
+    location: "Ratnagiri",
+    price: "70",
+    years: 9,
+    reviews: ["Great quality", "Fresh produce", "Trustworthy"]
+  },
+  {
+    id: 7,
+    name: "Herbal House",
+    type: "Herbs",
+    contact: "9867543210",
+    location: "Solapur",
+    price: "40",
+    years: 10,
+    reviews: ["Excellent service", "Clean packaging", "Always on time"]
+  },
+  {
+    id: 8,
+    name: "	FarmPure",
+    type: "Grains",
+    contact: "9800123456",
+    location: "Aurangabad",
+    price: "55",
+    years: 3,
+    reviews: ["Affordable pricing", "Fresh veggies", "Great quality"]
+  },
+  {
+    id: 9,
+    name: "Shivaji Seeds",
+    type: "Seeds ",
+    contact: "9898989898",
+    location: "Sangli",
+    price: "30",
+    years: 5,
+    reviews: ["Trustworthy supplier", "Clean packaging", "Highly recommended"]
+  },
+  {
+    id: 10,
+    name: "	Saibaba Agro",
+    type: "Pulses",
+    contact: "9811122233",
+    location: "Satara",
+    price: "65",
+    years: 6,
+    reviews: ["Fresh produce", "Affordable pricing", "Great quality"]
+  },
+   {
+    id: 11,
+    name: "	Sagar Dry Fruit",
+    type: "Dry Fruits",
+    contact: "9743214567",
+    location: "Amravati",
+    price: "120",
+    years: 4,
+    reviews: ["Great quality", "Always on time", "Affordable pricing"]
+  },
+  {
+    id: 12,
+    name: "Krushi Mart",
+    type: "Tools",
+    contact: "9753216549",
+    location: "Wardha",
+    price: "350",
+    years: 5,
+    reviews: ["Best tool", "Trustworthy"]
+  },
+  {
+    id: 13,
+    name: "	Healthy Harvest	",
+    type: "Organic Mix",
+    contact: "9856565656",
+    location: "Yavatmal",
+    price: "55",
+    years: 8,
+    reviews: ["Excellent service", "Affordable pricing", "Clean packaging"]
+  },
+  {
+    id: 14,
+    name: "	Kokan Fresh",
+    type: "Coconut ",
+    contact: "9933221144",
+    location: "Alibaug",
+    price: "38",
+    years: 6,
+    reviews: ["Highly recommended", "Trustworthy supplier", "Great quality"]
+  },
+  {
+    id: 15,
+    name: "Trikaya Produce"	,
+    type: "	Exotic Veg",
+    contact: "9821321321",
+    location: "Lonavala",
+    price: "90",
+    years: 4,
+    reviews: ["Clean packaging", "Always on time", "Fresh produce"]
+  },
+  {
+    id: 16,
+    name: "Sri Krishna Farms	Onions	9891234567	Jalgaon	25 Fiesta",
+    type: "Onions",
+    contact: "9891234567",
+    location: "Jalgaon",
+    price: "25",
+    years: 9,
+    reviews: ["Great quality", "Fresh produce", "Trustworthy"]
+  },
+  {
+    id: 17,
+    name: "	Golden Berries",
+    type: "Berries",
+    contact: "9876541230",
+    location: "Mahabaleshwar",
+    price: "100",
+    years: 10,
+    reviews: ["Excellent service", "Clean packaging", "Always on time"]
+  },
+  {
+    id: 18,
+    name: "	Veggie Basket",
+    type: "Mixed Vegetables",
+    contact: "9789678456",
+    location: "Beed",
+    price: "48",
+    years: 3,
+    reviews: ["Affordable pricing", "Fresh veggies", "Great quality"]
+  },
+  {
+    id: 19,
+    name: "Daily Greens	",
+    type: "Leafy Veg",
+    contact: "9834567890",
+    location: "Akola",
+    price: "42",
+    years: 5,
+    reviews: ["Trustworthy supplier", "Clean packaging", "Highly recommended"]
+  },
+  {
+    id: 20,
+    name: "Fresh Feast	",
+    type: "Fruits & Vegetables",
+    contact: "9843217890",
+    location: "Dhule",
+    price: "36",
+    years: 12,
+    reviews: ["Fresh produce", "Affordable pricing", "Great quality"]
+  },
+
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get('id'));
+    const supplier = suppliers.find(s => s.id === id);
+
+    if (supplier) {
+      document.getElementById('name').textContent = supplier.name;
+      document.getElementById('type').textContent = supplier.type;
+      document.getElementById('contact').textContent = supplier.contact;
+      document.getElementById('location').textContent = supplier.location;
+      document.getElementById('price').textContent = supplier.price;
+      document.getElementById('years').textContent = supplier.years;
+      const reviewList = document.getElementById('reviews');
+      supplier.reviews.forEach(review => {
+        const li = document.createElement('li');
+        li.textContent = review;
+        reviewList.appendChild(li);
+      });
+    } else {
+      document.querySelector('.profile-box').innerHTML = `<h3>Supplier not found 😢</h3>`;
+    }
+  </script>
+</body>
+</html>
